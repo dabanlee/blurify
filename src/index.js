@@ -5,18 +5,13 @@ import {
 export default class blurify {
     constructor(options) {
         this.blur = options.blur || 6;
-
-        if (options.selector) {
-            this.selector = options.selector;
-            this.$els = [...document.querySelectorAll(this.selector)];
-            preloadImages(this.$els).done(images => {
-                images.map((image, index) => {
-                    this.$els[index].src = this.getDataURL(image);
-                });
+        this.imageType = options.imageType || `image/jpeg`;
+        this.$els = [...options.images];
+        preloadImages(this.$els).done(images => {
+            images.map((image, index) => {
+                this.$els[index].src = this.getDataURL(image);
             });
-        } else {
-            options.image.src = this.getDataURL(options.image);
-        }
+        });
     }
 
     blurify(canvas, blur) {
@@ -39,6 +34,6 @@ export default class blurify {
         canvas.height = image.height;
         ctx.drawImage(image, 0, 0);
         this.blurify(canvas, this.blur);
-        return canvas.toDataURL(`image/jpeg`);
+        return canvas.toDataURL(this.imageType);
     }
 }
