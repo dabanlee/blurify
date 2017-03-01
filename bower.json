@@ -1,0 +1,26 @@
+{
+  "name": "blurify",
+  "description": "Image blurify",
+  "main": "dist/blurify.js",
+  "authors": [
+    "JustClear"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "blurify",
+    "library"
+  ],
+  "homepage": "https://github.com/JustClear/library",
+  "ignore": [
+    "**/.*",
+    ".*",
+    "*.js",
+    "*.json",
+    "*.md",
+    "*.yml",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "blurify",
+  "version": "1.0.0",
+  "description": "Image blurify.",
+  "main": "dist/blurify.js",
+  "scripts": {
+    "test": "mocha test/index.js",
+    "start": "npm run watch",
+    "watch": "NODE_ENV=development rollup -w -c rollup.config.js",
+    "dev": "NODE_ENV=development rollup -c rollup.config.js",
+    "prod": "NODE_ENV=production rollup -c rollup.config.js",
+    "publish": "rm -rf dist && npm run dev && npm run prod && npm run lint",
+    "lint": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JustClear/blurify.git"
+  },
+  "keywords": [
+    "blurify",
+    "library"
+  ],
+  "author": "JustClear",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JustClear/blurify/issues"
+  },
+  "homepage": "https://github.com/JustClear/blurify#readme",
+  "devDependencies": {
+    "babel-eslint": "^6.1.2",
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "eslint": "^3.4.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^3.0.2",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-sourcemaps": "^0.3.6",
+    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-watch": "^2.5.0"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.23.0"
+  }
+}
