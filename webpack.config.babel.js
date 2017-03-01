@@ -1,8 +1,4 @@
-import path from 'path';
-
-let configure = {};
-
-configure = {
+export default {
     entry: {
         'blurify': [
             './src/index.js',
@@ -30,5 +26,3 @@ configure = {
         extensions: ['.js', '.es6', '.scss', '.css'],
     },
 };
-
-module.exports = configure;
