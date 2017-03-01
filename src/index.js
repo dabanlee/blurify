@@ -6,10 +6,8 @@ export default class blurify {
             this.selector = options.selector;
             this.$els = [...document.querySelectorAll(this.selector)];
             preloadImages(this.$els).done(images => {
-                images.map(image => {
-                    console.log(this.getDataURL(image).slice(0, 100));
-                    image.src = this.getDataURL(image);
-                    console.log(image);
+                images.map((image, index) => {
+                    this.$els[index].src = this.getDataURL(image);
                 });
             });
         } else {
