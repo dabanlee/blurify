@@ -1,3 +1,7 @@
+import {
+    preloadImages,
+} from './utils';
+
 export default class blurify {
     constructor(options) {
         this.blur = options.blur || 6;
@@ -37,34 +41,4 @@ export default class blurify {
         this.blurify(canvas, this.blur);
         return canvas.toDataURL(`image/jpeg`);
     }
-}
-
-function preloadImages(images) {
-    let newimages = [],
-        loadedImagesCount = 0,
-        postAction = function () {};
-
-    images = (typeof images != 'object') ? [images] : images;
-
-    function imageLoadPost() {
-        loadedImagesCount++;
-        if (loadedImagesCount == images.length) postAction(newimages);
-    }
-
-    images.map((image, i) => {
-        newimages[i] = new Image();
-        newimages[i].src = image.src;
-        newimages[i].onload = function () {
-            imageLoadPost();
-        };
-        newimages[i].onerror = function () {
-            imageLoadPost();
-        };
-    });
-
-    return {
-        done(callback) {
-            postAction = callback || postAction;
-        },
-    };
 }
