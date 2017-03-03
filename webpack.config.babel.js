@@ -8,8 +8,8 @@ export default {
         ],
     },
     output: {
-        path: '../dist',
-        filename: 'js/[name].js?[hash:8]',
+        path: './dist',
+        filename: '[name].js?[hash:8]',
     },
     module: {
         loaders: [{
