@@ -1,6 +1,6 @@
 {
   "name": "blurify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Image blurify.",
   "main": "dist/blurify.js",
   "scripts": {
