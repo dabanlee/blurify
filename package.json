@@ -9,10 +9,11 @@
     "dev": "NODE_ENV=development webpack",
     "watch": "NODE_ENV=development webpack -w",
     "prod": "NODE_ENV=production webpack -p",
+    "publish": "rm -rf dist && npm run dev && npm run prod && npm run lint",
     "dev:rollup": "NODE_ENV=development rollup -c rollup.config.js",
     "watch:rollup": "NODE_ENV=development rollup -w -c rollup.config.js",
     "prod:rollup": "NODE_ENV=production rollup -c rollup.config.js",
-    "publish": "rm -rf dist && npm run dev && npm run prod && npm run lint",
+    "publish:rollup": "rm -rf dist && npm run dev:rollup && npm run prod:rollup && npm run lint",
     "lint": "eslint src"
   },
   "repository": {
