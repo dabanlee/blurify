@@ -9,6 +9,9 @@
         "node": true,
         "mocha": true,
     },
+    "globals": {
+        "define": true
+    },
     "parser": "babel-eslint",
     "rules": {
         "semi": [2, "always"],
