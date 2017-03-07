@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>blurify</title>
+    <style>
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="blurify-container">
+        <img data-src="./test/1.jpg" class="blurify">
+        <img data-src="./test/2.jpg" class="blurify">
+    </div>
+
+    <script src="dist/blurify.js"></script>
+    <script>
+        (function () {
+            new blurify({
+                images: document.querySelectorAll('.blurify'),
+                blur: 6,
+                mode: 'auto',
+            });
+        })();
+    </script>
+</body>
+</html>
