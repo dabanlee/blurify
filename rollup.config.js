@@ -30,11 +30,7 @@ Configure = {
     dest: `${paths.dist.root}${fileName}.js`,
     sourceMap: true,
     plugins: [
-        babel({
-            plugins: ['external-helpers'],
-            externalHelpers: true,
-            runtimeHelpers: true,
-        }),
+        babel(),
         sourcemaps(),
     ],
 };
