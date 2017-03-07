@@ -9,6 +9,10 @@
 $ npm i blurify
 ```
 
+## Demo
+
+[Demo](https://justclear.github.io/blurify/)
+
 ## Usage
 
 ### blurify(options)
