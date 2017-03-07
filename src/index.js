@@ -1,26 +1,38 @@
 import {
     preloadImages,
+    cssSupport,
 } from './utils';
 
 export default class blurify {
     constructor(options) {
+        this.options = options;
         this.blur = options.blur || 6;
         this.mode = options.mode || 'css';
         this.$els = [...options.images];
 
-        if (this.mode == 'canvas') {
-            this.imageType = options.imageType || `image/jpeg`;
-            preloadImages(this.$els).done(images => {
-                images.map((image, index) => {
-                    this.$els[index].src = this.getDataURL(image);
-                });
-            });
+        if (this.mode == 'auto') {
+            cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();
+        } else if (this.mode == 'css') {
+            this.useCSSMode();
         } else {
-            this.$els.map(el => {
-                el.src = el.dataset.src;
-                el.style['filter'] = el.style['-webkit-filter'] = `blur(${options.blur}px)`;
-            });
+            this.useCanvasMode();
         }
+    }
+
+    useCSSMode() {
+        this.$els.map(el => {
+            el.src = el.dataset.src;
+            el.style['filter'] = el.style['-webkit-filter'] = `blur(${this.options.blur}px)`;
+        });
+    }
+
+    useCanvasMode() {
+        this.imageType = this.options.imageType || `image/jpeg`;
+        preloadImages(this.$els).done(images => {
+            images.map((image, index) => {
+                this.$els[index].src = this.getDataURL(image);
+            });
+        });
     }
 
     blurify(canvas, blur) {
