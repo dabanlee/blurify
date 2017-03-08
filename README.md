@@ -3,6 +3,8 @@
 [![dependencies](https://david-dm.org/justclear/blurify.svg)](https://david-dm.org/justclear/blurify#info=dependencies&view=table)
 [![devDependencies](https://david-dm.org/justclear/blurify/dev-status.svg)](https://david-dm.org/justclear/blurify#info=devDependencies&view=table)
 
+blurify.js is a tiny(~2kb) library to blurred pictures, support graceful downgrade from `css` mode to `canvas` mode.
+
 ## Installation
 
 ```sh
@@ -38,20 +40,20 @@ new blurify({
 
 ## Change log
 
-### v1.0.7
+#### v1.0.7
 - fault-tolerance process
 
-### v1.0.6
+#### v1.0.6
 - fixed `toArray` bugs
 
-### v1.0.5
+#### v1.0.5
 - add `auto` mode
 
-### v1.0.4
+#### v1.0.4
 - add `css` mode
 
-### v1.0.3
+#### v1.0.3
 - fixed image cross origin issue
 
-### v1.0.2
+#### v1.0.2
 - fixed images reference error
