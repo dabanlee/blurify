@@ -37,7 +37,7 @@ export default class blurify {
 
     blurify(canvas, blur) {
         let ctx = canvas.getContext('2d');
-        ctx.globalAlpha = 0.5;
+        ctx.globalAlpha = 1 / (2 * blur);
         for (let y = -blur; y <= blur; y += 2) {
             for (let x = -blur; x <= blur; x += 2) {
                 ctx.drawImage(canvas, x, y);
