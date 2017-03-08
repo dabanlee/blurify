@@ -8,7 +8,7 @@ export default class blurify {
         this.options = options;
         this.blur = options.blur || 6;
         this.mode = options.mode || 'css';
-        this.$els = [...options.images];
+        this.$els = [].slice.call(options.images);
 
         if (this.mode == 'auto') {
             cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();
