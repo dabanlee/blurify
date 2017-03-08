@@ -35,3 +35,23 @@ new blurify({
     mode: 'css',
 });
 ```
+
+## Change log
+
+### v1.0.7
+- fault-tolerance process
+
+### v1.0.6
+- fixed `toArray` bugs
+
+### v1.0.5
+- add `auto` mode
+
+### v1.0.4
+- add `css` mode
+
+### v1.0.3
+- fixed image cross origin issue
+
+### v1.0.2
+- fixed images reference error
