@@ -62,7 +62,7 @@
             this.options = options;
             this.blur = options.blur || 6;
             this.mode = options.mode || 'css';
-            this.$els = [].slice.call(options.images);
+            this.$els = options.images.nodeType === 1 ? [options.images] : [].slice.call(options.images);
 
             if (this.mode == 'auto') {
                 cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();
