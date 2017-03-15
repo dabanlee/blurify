@@ -1,6 +1,7 @@
 import {
     preloadImages,
     cssSupport,
+    ie9lower,
 } from './utils';
 
 export default class blurify {
@@ -10,7 +11,9 @@ export default class blurify {
         this.mode = options.mode || 'css';
         this.$els = options.images.nodeType === 1 ? [options.images] : [].slice.call(options.images);
 
-        if (this.mode == 'auto') {
+        if( ie9lower() ) {
+          this.useCanvasMode();
+        } else if (this.mode == 'auto') {
             cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();
         } else if (this.mode == 'css') {
             this.useCSSMode();
@@ -21,7 +24,7 @@ export default class blurify {
 
     useCSSMode() {
         this.$els.map(el => {
-            el.src = el.dataset.src;
+            el.src = !document.documentElement.dataset ? el.getAttribute('data-src') : el.dataset.src;
             el.style['filter'] = el.style['-webkit-filter'] = `blur(${this.options.blur}px)`;
         });
     }
