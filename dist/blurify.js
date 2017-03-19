@@ -99,7 +99,7 @@
             key: 'blurify',
             value: function blurify(canvas, blur) {
                 var ctx = canvas.getContext('2d');
-                ctx.globalAlpha = 0.5;
+                ctx.globalAlpha = 1 / (2 * blur);
                 for (var y = -blur; y <= blur; y += 2) {
                     for (var x = -blur; x <= blur; x += 2) {
                         ctx.drawImage(canvas, x, y);
