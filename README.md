@@ -42,6 +42,7 @@ new blurify({
 
 #### v1.0.7
 - fault-tolerance process
+- set globalAlpha dynamicly based on blur radius
 
 #### v1.0.6
 - fixed `toArray` bugs
