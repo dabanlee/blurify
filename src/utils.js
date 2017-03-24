@@ -13,7 +13,7 @@ export function preloadImages(images) {
     images.map((image, i) => {
         newimages[i] = new Image();
         newimages[i].crossOrigin = '*';
-        newimages[i].src = image.dataset.src;
+        newimages[i].src = !document.documentElement.dataset ? image.getAttribute('data-src') : image.dataset.src;
         newimages[i].onload = function () {
             imageLoadPost();
         };
@@ -41,4 +41,17 @@ export function cssSupport(...args) {
     } else {
         return false;
     }
+}
+
+export function ie9lower() {
+		let	v = 3,
+		div = document.createElement('div'),
+		all = div.getElementsByTagName('i');
+
+		while(
+			div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
+			all[0]
+		);
+
+		return (v > 4 && v <= 9) ? true : false;
 }
