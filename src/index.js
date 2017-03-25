@@ -21,7 +21,7 @@ export default class blurify {
 
     useCSSMode() {
         this.$els.map(el => {
-            el.src = el.dataset.src;
+            el.src = el.dataset ? el.dataset.src : el.getAttribute('data-src');
             el.style['filter'] = el.style['-webkit-filter'] = `blur(${this.options.blur}px)`;
         });
     }

@@ -21,7 +21,7 @@
         images.map(function (image, i) {
             newimages[i] = new Image();
             newimages[i].crossOrigin = '*';
-            newimages[i].src = image.dataset.src;
+            newimages[i].src = image.dataset ? image.dataset.src : image.getAttribute('data-src');
             newimages[i].onload = function () {
                 imageLoadPost();
             };
@@ -79,7 +79,7 @@
                 var _this = this;
 
                 this.$els.map(function (el) {
-                    el.src = el.dataset.src;
+                    el.src = el.dataset ? el.dataset.src : el.getAttribute('data-src');
                     el.style['filter'] = el.style['-webkit-filter'] = 'blur(' + _this.options.blur + 'px)';
                 });
             }
@@ -99,7 +99,7 @@
             key: 'blurify',
             value: function blurify(canvas, blur) {
                 var ctx = canvas.getContext('2d');
-                ctx.globalAlpha = 0.5;
+                ctx.globalAlpha = 1 / (2 * blur);
                 for (var y = -blur; y <= blur; y += 2) {
                     for (var x = -blur; x <= blur; x += 2) {
                         ctx.drawImage(canvas, x, y);

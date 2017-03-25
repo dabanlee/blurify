@@ -13,7 +13,7 @@ export function preloadImages(images) {
     images.map((image, i) => {
         newimages[i] = new Image();
         newimages[i].crossOrigin = '*';
-        newimages[i].src = image.dataset.src;
+        newimages[i].src = image.dataset ? image.dataset.src : image.getAttribute('data-src');
         newimages[i].onload = function () {
             imageLoadPost();
         };
