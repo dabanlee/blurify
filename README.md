@@ -40,6 +40,9 @@ new blurify({
 
 ## Change log
 
+#### v1.0.8
+- fixed [#2](https://github.com/JustClear/blurify/issues/2)
+
 #### v1.0.7
 - fault-tolerance process
 - set globalAlpha dynamicly based on blur radius
