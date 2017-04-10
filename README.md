@@ -3,7 +3,7 @@
 [![dependencies](https://david-dm.org/justclear/blurify.svg)](https://david-dm.org/justclear/blurify#info=dependencies&view=table)
 [![devDependencies](https://david-dm.org/justclear/blurify/dev-status.svg)](https://david-dm.org/justclear/blurify#info=devDependencies&view=table)
 
-blurify.js is a tiny(~2kb) library to blurred pictures, support graceful downgrade from `css` mode to `canvas` mode.
+blurify.js is a tiny(~2kb) library to blur pictures, with graceful downgrade support from `css` mode to `canvas` mode.
 
 ## Installation
 
