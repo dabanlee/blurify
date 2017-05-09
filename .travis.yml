@@ -1,0 +1,17 @@
+language: node_js
+
+branches:
+  only:
+    - master
+
+cache:
+  directories:
+    - $HOME/.npm
+    - $HOME/.yarn-cache
+    - node_modules
+
+install:
+- npm install
+
+script:
+- npm run publish
