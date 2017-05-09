@@ -1,5 +1,6 @@
 # blurify
 
+![travis](https://api.travis-ci.org/JustClear/blurify.svg?branch=master)
 [![dependencies](https://david-dm.org/justclear/blurify.svg)](https://david-dm.org/justclear/blurify#info=dependencies&view=table)
 [![devDependencies](https://david-dm.org/justclear/blurify/dev-status.svg)](https://david-dm.org/justclear/blurify#info=devDependencies&view=table)
 
