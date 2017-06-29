@@ -20,11 +20,12 @@
     <script src="dist/blurify.js"></script>
     <script>
         (function () {
-            new blurify({
+            blurify({
                 images: document.querySelectorAll('.blurify'),
                 blur: 6,
                 mode: 'auto',
             });
+            // blurify(6, document.querySelectorAll('.blurify'));
         })();
     </script>
 </body>

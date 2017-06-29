@@ -37,9 +37,16 @@ new blurify({
     blur: 6,
     mode: 'css',
 });
+
+// or in shorthand
+
+blurify(6, document.querySelectorAll('.blurify'));
 ```
 
 ## Change log
+
+#### v1.1.0
+- refactor
 
 #### v1.0.8
 - fixed [#2](https://github.com/JustClear/blurify/issues/2)

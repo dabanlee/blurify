@@ -1,44 +1,43 @@
-export function preloadImages(images) {
-    let newimages = [],
-        loadedImagesCount = 0,
-        postAction = function () {};
+export function preload(imageUrls) {
+    let images = [],
+        count = 0,
+        doneAction = function () {};
 
-    images = (typeof images != 'object') ? [images] : images;
+    imageUrls = (typeof imageUrls != 'object') ? [imageUrls] : imageUrls;
 
-    function imageLoadPost() {
-        loadedImagesCount++;
-        if (loadedImagesCount == images.length) postAction(newimages);
-    }
+    imageUrls.length === 0 && doneAction(images);
 
-    images.map((image, i) => {
-        newimages[i] = new Image();
-        newimages[i].crossOrigin = '*';
-        newimages[i].src = image.dataset ? image.dataset.src : image.getAttribute('data-src');
-        newimages[i].onload = function () {
-            imageLoadPost();
-        };
-        newimages[i].onerror = function () {
-            imageLoadPost();
-        };
+    imageUrls.map((image, i) => {
+        images[i] = new Image();
+        images[i].crossOrigin = '*';
+        images[i].src = image.dataset ? image.dataset.src : image.getAttribute('data-src');
+        images[i].onload = imageLoad;
+        images[i].onerror = imageLoad;
     });
 
+    function imageLoad() {
+        count++;
+        if (count == imageUrls.length) doneAction(images);
+    }
+
     return {
-        done(callback) {
-            postAction = callback || postAction;
+        done() {
+            doneAction = arguments[0] || doneAction;
         },
     };
 }
 
-export function cssSupport(...args) {
-    let el = document.createElement('div'),
-        property = args[0],
-        value = args[1];
-    if (args.length === 1) {
-        return property in el.style ? true : false;
-    } else if (args.length === 2) {
-        el.style[property] = value;
-        return el.style[property] ? true : false;
-    } else {
-        return false;
+export function cssSupport() {
+    const el = document.createElement('div');
+    const property = arguments[0];
+
+    switch (arguments.length) {
+        case 1:
+            return property in el.style ? true : false;
+        case 2:
+            el.style[property] = arguments[1];
+            return el.style[property] ? true : false;
+        default:
+            return false;
     }
 }
