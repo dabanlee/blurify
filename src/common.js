@@ -1,13 +1,13 @@
-export function preload(imageUrls) {
-    let images = [],
-        count = 0,
-        doneAction = function () {};
+export function preload(imageURLs) {
+    const images = [];
+    let count = 0,
+        doneAction = () => {};
 
-    imageUrls = (typeof imageUrls != 'object') ? [imageUrls] : imageUrls;
+    imageURLs = (typeof imageURLs != 'object') ? [imageURLs] : imageURLs;
 
-    imageUrls.length === 0 && doneAction(images);
+    imageURLs.length === 0 && doneAction(images);
 
-    imageUrls.map((image, i) => {
+    imageURLs.map((image, i) => {
         images[i] = new Image();
         images[i].crossOrigin = '*';
         images[i].src = image.dataset ? image.dataset.src : image.getAttribute('data-src');
@@ -17,7 +17,7 @@ export function preload(imageUrls) {
 
     function imageLoad() {
         count++;
-        if (count == imageUrls.length) doneAction(images);
+        if (count == imageURLs.length) doneAction(images);
     }
 
     return {
@@ -28,15 +28,15 @@ export function preload(imageUrls) {
 }
 
 export function cssSupport() {
-    const el = document.createElement('div');
+    const element = document.createElement('div');
     const property = arguments[0];
 
     switch (arguments.length) {
         case 1:
-            return property in el.style ? true : false;
+            return property in element.style ? true : false;
         case 2:
-            el.style[property] = arguments[1];
-            return el.style[property] ? true : false;
+            element.style[property] = arguments[1];
+            return element.style[property] ? true : false;
         default:
             return false;
     }

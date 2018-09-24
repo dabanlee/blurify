@@ -1,7 +1,4 @@
-import {
-    preload,
-    cssSupport,
-} from './utils';
+import { preload, cssSupport } from './common';
 
 export default function blurify(options) {
     if (!(this instanceof blurify)) return new blurify(...arguments);
@@ -38,6 +35,7 @@ blurify.prototype.useCSSMode = function () {
 
 blurify.prototype.useCanvasMode = function () {
     this.imageType = this.options.imageType || `image/jpeg`;
+
     preload(this.$els).done(images => {
         images.map((image, index) => {
             this.$els[index].src = this.getDataURL(image);
@@ -46,7 +44,7 @@ blurify.prototype.useCanvasMode = function () {
 };
 
 blurify.prototype.blurify = function(canvas, blur) {
-    let ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d');
     ctx.globalAlpha = 1 / (2 * blur);
     for (let y = -blur; y <= blur; y += 2) {
         for (let x = -blur; x <= blur; x += 2) {
@@ -58,12 +56,13 @@ blurify.prototype.blurify = function(canvas, blur) {
 };
 
 blurify.prototype.getDataURL = function(image) {
-    let canvas = document.createElement('canvas'),
-        ctx = canvas.getContext('2d');
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
 
     canvas.width = image.width;
     canvas.height = image.height;
     ctx.drawImage(image, 0, 0);
     this.blurify(canvas, this.blur);
+
     return canvas.toDataURL(this.imageType);
 };

@@ -1,42 +1,26 @@
-//
-// Rollup configure file
-//
-
-import babel from 'rollup-plugin-babel';
+import resolve from 'rollup-plugin-node-resolve';
+import commonjs from 'rollup-plugin-commonjs';
 import uglify from 'rollup-plugin-uglify';
 import sourcemaps from 'rollup-plugin-sourcemaps';
 
-const paths = {
-    root: '/',
-    source: {
-        root: './src/',
-        modules: './src/modules/',
-    },
-    dist: {
-        root: './dist/',
-    },
-};
+const packages = require('./package.json');
+const fileName = process.env.NODE_ENV === 'development' ? packages.moduleName : `${packages.moduleName}.min`;
 
-let fileName,
-    Configure;
-
-fileName = process.env.NODE_ENV === 'development' ? 'blurify' : 'blurify.min';
-
-Configure = {
-    format: 'umd', // 'amd', 'cjs', 'es', 'iife', 'umd'
-    moduleName: 'blurify',
-    moduleId: 'blurify',
-    entry: `${paths.source.root}index.js`,
-    dest: `${paths.dist.root}${fileName}.js`,
-    sourceMap: true,
+const configure = {
+    input: `src/index.js`,
+    output: [{
+        format: 'umd',
+        name: fileName,
+        sourcemap: true,
+        file: `dist/${fileName.toLowerCase()}.js`,
+    }],
     plugins: [
-        babel(),
+        resolve(),
+        commonjs(),
         sourcemaps(),
     ],
 };
 
-if (process.env.NODE_ENV === 'production') {
-    Configure.plugins.push(uglify());
-}
+if (process.env.NODE_ENV === 'production') configure.plugins.push(uglify());
 
-export default Configure;
+export default configure;

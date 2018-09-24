@@ -12,7 +12,7 @@ blurify.js is a tiny(~2kb) library to blur pictures, with graceful downgrade sup
 $ npm i blurify
 ```
 
-## Demo
+## DEMO
 
 [Demo](https://justclear.github.io/blurify/)
 
