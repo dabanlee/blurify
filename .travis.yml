@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-- "4"
+- "8"
 
 branches:
   only:
@@ -14,7 +14,7 @@ cache:
     - node_modules
 
 install:
-- npm install
+- yarn install
 
 script:
-- npm run publish
+- yarn run publish

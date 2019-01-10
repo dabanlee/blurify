@@ -1,26 +1,45 @@
+import alias from 'rollup-plugin-alias';
+import minify from 'rollup-plugin-babel-minify';
 import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import uglify from 'rollup-plugin-uglify';
-import sourcemaps from 'rollup-plugin-sourcemaps';
+import typescript from 'rollup-plugin-typescript';
 
-const packages = require('./package.json');
-const fileName = process.env.NODE_ENV === 'development' ? packages.moduleName : `${packages.moduleName}.min`;
+const isProd = process.env.NODE_ENV === 'production';
+const { moduleName } = require('./package.json');
+const getFilePath = (type = '') => `dist/${moduleName}${type == '' ? '' : '.'}${type}.js`;
+const output = options => ({
+    name: moduleName,
+    sourcemap: true,
+    ...options,
+});
 
 const configure = {
-    input: `src/index.js`,
-    output: [{
+    input: 'src/index.ts',
+    output: [output({
+        file: getFilePath(),
         format: 'umd',
-        name: fileName,
-        sourcemap: true,
-        file: `dist/${fileName.toLowerCase()}.js`,
-    }],
+    }), output({
+        file: getFilePath('es'),
+        format: 'es',
+    })],
     plugins: [
-        resolve(),
-        commonjs(),
-        sourcemaps(),
+        alias({
+            common: './common',
+        }),
+        typescript(),
+        resolve({
+            extensions: ['.js', '.ts'],
+        }),
     ],
+    external: [],
 };
 
-if (process.env.NODE_ENV === 'production') configure.plugins.push(uglify());
+if (isProd) {
+    configure.output = configure.output.map(output => {
+        const format = output.format == 'umd' ? '' : `.${output.format}`;
+        output.file = `dist/${moduleName}${format}.min.js`;
+        return output;
+    });
+    configure.plugins.push(minify());
+}
 
-export default configure;
+module.exports = configure;
