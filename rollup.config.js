@@ -1,16 +1,20 @@
-import alias from 'rollup-plugin-alias';
-import minify from 'rollup-plugin-babel-minify';
-import resolve from 'rollup-plugin-node-resolve';
-import typescript from 'rollup-plugin-typescript';
+import { terser } from 'rollup-plugin-terser'
+import { nodeResolve } from '@rollup/plugin-node-resolve'
+import typescript from 'rollup-plugin-typescript2'
+import commonjs from '@rollup/plugin-commonjs'
 
-const isProd = process.env.NODE_ENV === 'production';
-const { moduleName } = require('./package.json');
-const getFilePath = (type = '') => `dist/${moduleName}${type == '' ? '' : '.'}${type}.js`;
+const isProd = process.env.NODE_ENV === 'production'
+const { moduleName, name } = require('./package.json')
+const fileName = name
+const getFilePath = (format = '') => `dist/${fileName}${format == '' ? '' : '.'}${format}.js`
 const output = options => ({
     name: moduleName,
     sourcemap: true,
     ...options,
-});
+    globals: {
+        // 
+    },
+})
 
 const configure = {
     input: 'src/index.ts',
@@ -22,24 +26,20 @@ const configure = {
         format: 'es',
     })],
     plugins: [
-        alias({
-            common: './common',
-        }),
         typescript(),
-        resolve({
-            extensions: ['.js', '.ts'],
-        }),
+        commonjs(),
+        nodeResolve(),
     ],
     external: [],
-};
+}
 
 if (isProd) {
     configure.output = configure.output.map(output => {
-        const format = output.format == 'umd' ? '' : `.${output.format}`;
-        output.file = `dist/${moduleName}${format}.min.js`;
-        return output;
-    });
-    configure.plugins.push(minify());
+        const format = output.format == 'umd' ? '' : `.${output.format}`
+        output.file = `dist/${fileName}${format}.min.js`
+        return output
+    })
+    configure.plugins.push(terser())
 }
 
-module.exports = configure;
+module.exports = configure

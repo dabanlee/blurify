@@ -9,7 +9,7 @@ export default function blurify(options: {
     mode: 'auto',
     images: [],
 }) {
-    if (!(this instanceof blurify)) return new blurify(options);
+    if (!(this instanceof blurify)) return new (blurify as any)(options);
 
     if (typeof options === 'number') {
         options = {
@@ -23,7 +23,7 @@ export default function blurify(options: {
     this.blur = options.blur || 6;
     this.mode = options.mode || 'css';
     console.log();
-    
+
     this.$els = options.images.nodeType == 1 ? [options.images] : [].slice.call(options.images);
 
     if (this.mode == 'auto') {

@@ -19,7 +19,7 @@ function preload(images) {
     return {
         done: function (cb) {
             doneAction = arguments[0] || doneAction;
-        }
+        },
     };
 }
 function cssSupport(key, value) {
@@ -39,7 +39,7 @@ function blurify(options) {
     if (options === void 0) { options = {
         blur: 6,
         mode: 'auto',
-        images: []
+        images: [],
     }; }
     if (!(this instanceof blurify))
         return new blurify(options);
@@ -47,13 +47,14 @@ function blurify(options) {
         options = {
             blur: options,
             images: arguments[1],
-            mode: 'auto'
+            mode: 'auto',
         };
     }
     this.options = options;
     this.blur = options.blur || 6;
     this.mode = options.mode || 'css';
     console.log();
+    // @ts-ignore
     this.$els = options.images.nodeType == 1 ? [options.images] : [].slice.call(options.images);
     if (this.mode == 'auto') {
         cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();

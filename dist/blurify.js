@@ -1,8 +1,8 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
     typeof define === 'function' && define.amd ? define(factory) :
-    global.blurify = factory();
-}(typeof self !== 'undefined' ? self : this, function () { 'use strict';
+    (global = typeof globalThis !== 'undefined' ? globalThis : global || self, global.blurify = factory());
+}(this, (function () { 'use strict';
 
     function preload(images) {
         var imageNodes = [];
@@ -25,7 +25,7 @@
         return {
             done: function (cb) {
                 doneAction = arguments[0] || doneAction;
-            }
+            },
         };
     }
     function cssSupport(key, value) {
@@ -45,7 +45,7 @@
         if (options === void 0) { options = {
             blur: 6,
             mode: 'auto',
-            images: []
+            images: [],
         }; }
         if (!(this instanceof blurify))
             return new blurify(options);
@@ -53,13 +53,14 @@
             options = {
                 blur: options,
                 images: arguments[1],
-                mode: 'auto'
+                mode: 'auto',
             };
         }
         this.options = options;
         this.blur = options.blur || 6;
         this.mode = options.mode || 'css';
         console.log();
+        // @ts-ignore
         this.$els = options.images.nodeType == 1 ? [options.images] : [].slice.call(options.images);
         if (this.mode == 'auto') {
             cssSupport('filter', 'blur(1px)') ? this.useCSSMode() : this.useCanvasMode();
@@ -114,5 +115,5 @@
 
     return blurify;
 
-}));
+})));
 //# sourceMappingURL=blurify.js.map

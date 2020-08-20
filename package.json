@@ -9,7 +9,7 @@
     "start": "NODE_ENV=development rollup -w -c rollup.config.js",
     "dev": "NODE_ENV=development rollup -c rollup.config.js",
     "prod": "NODE_ENV=production rollup -c rollup.config.js",
-    "publish": "rm -rf dist && npm run dev && npm run prod"
+    "build": "rm -rf dist && npm run dev && npm run prod"
   },
   "repository": {
     "type": "git",
@@ -26,13 +26,14 @@
   },
   "homepage": "https://github.com/JustClear/blurify#readme",
   "devDependencies": {
-    "tslib": "^1.9.3",
-    "mocha": "^5.2.0",
     "expect.js": "^0.3.1",
-    "typescript": "^3.2.2",
-    "rollup-plugin-alias": "^1.5.1",
-    "rollup-plugin-babel-minify": "^6.2.0",
-    "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-typescript": "^1.0.0"
+    "mocha": "^5.2.0",
+    "@rollup/plugin-commonjs": "^14.0.0",
+    "@rollup/plugin-node-resolve": "^8.4.0",
+    "rollup": "^2.26.4",
+    "rollup-plugin-terser": "^7.0.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "tslib": "^2.0.0",
+    "typescript": "^3.9.3"
   }
 }
