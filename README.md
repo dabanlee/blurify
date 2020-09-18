@@ -1,8 +1,8 @@
 # blurify
 
-![travis](https://api.travis-ci.org/JustClear/blurify.svg?branch=master)
-[![dependencies](https://david-dm.org/justclear/blurify.svg)](https://david-dm.org/justclear/blurify#info=dependencies&view=table)
-[![devDependencies](https://david-dm.org/justclear/blurify/dev-status.svg)](https://david-dm.org/justclear/blurify#info=devDependencies&view=table)
+![travis](https://api.travis-ci.org/dabanlee/blurify.svg?branch=master)
+[![dependencies](https://david-dm.org/dabanlee/blurify.svg)](https://david-dm.org/dabanlee/blurify#info=dependencies&view=table)
+[![devDependencies](https://david-dm.org/dabanlee/blurify/dev-status.svg)](https://david-dm.org/dabanlee/blurify#info=devDependencies&view=table)
 
 blurify.js is a tiny(~2kb) library to blur pictures, with graceful downgrade support from `css` mode to `canvas` mode.
 
@@ -14,7 +14,7 @@ $ npm i blurify
 
 ## DEMO
 
-[Demo](https://justclear.github.io/blurify/)
+[Demo](https://dabanlee.github.io/blurify/)
 
 ## Usage
 
@@ -45,4 +45,4 @@ blurify(6, document.querySelectorAll('.blurify'));
 
 ### License
 
-Licensed under the [MIT License](https://github.com/JustClear/blurify/blob/master/LICENSE)
+Licensed under the [MIT License](https://github.com/dabanlee/blurify/blob/master/LICENSE)
