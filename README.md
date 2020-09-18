@@ -1,8 +1,6 @@
 # blurify
 
-![travis](https://api.travis-ci.org/dabanlee/blurify.svg?branch=master)
-[![dependencies](https://david-dm.org/dabanlee/blurify.svg)](https://david-dm.org/dabanlee/blurify#info=dependencies&view=table)
-[![devDependencies](https://david-dm.org/dabanlee/blurify/dev-status.svg)](https://david-dm.org/dabanlee/blurify#info=devDependencies&view=table)
+![npmsize](https://img.shields.io/bundlephobia/min/blurify)
 
 blurify.js is a tiny(~2kb) library to blur pictures, with graceful downgrade support from `css` mode to `canvas` mode.
 
