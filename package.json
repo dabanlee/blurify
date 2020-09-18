@@ -1,6 +1,6 @@
 {
   "name": "blurify",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Image blurify.",
   "main": "dist/blurify.js",
   "moduleName": "blurify",
@@ -13,18 +13,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JustClear/blurify.git"
+    "url": "git+https://github.com/dabanlee/blurify.git"
   },
   "keywords": [
     "blurify",
     "library"
   ],
-  "author": "JustClear",
+  "author": "大板栗",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JustClear/blurify/issues"
+    "url": "https://github.com/dabanlee/blurify/issues"
   },
-  "homepage": "https://github.com/JustClear/blurify#readme",
+  "homepage": "https://github.com/dabanlee/blurify#readme",
   "devDependencies": {
     "expect.js": "^0.3.1",
     "mocha": "^5.2.0",
